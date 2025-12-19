@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Linter Commitów Git</title>
+    <link rel="stylesheet" href="/src/style.css"/>
+</head>
+<body>
+<main id="app">
+    <h1>Linter Commitów Git</h1>
+    <p class="description">
+        Narzędzie do sprawdzania i naprawiania wiadomości commitów zgodnie z
+        <a href="https://www.conventionalcommits.org/pl" target="_blank" rel="noopener">Conventional Commits</a>.
+    </p>
+
+    <section class="info-box">
+        <h2>📖 Format wiadomości</h2>
+        <div class="format-example">
+            <code>typ(zakres?): temat</code>
+            <code class="muted">← nagłówek (wymagany)</code>
+        </div>
+        <div class="format-example">
+            <code></code>
+            <code class="muted">← pusta linia (jeśli jest treść)</code>
+        </div>
+        <div class="format-example">
+            <code>Opcjonalna treść wiadomości... </code>
+            <code class="muted">← treść (opcjonalna)</code>
+        </div>
+    </section>
+
+    <section class="info-box rules-box">
+        <h2>📋 Sprawdzane reguły</h2>
+        <ul class="rules-list">
+            <li><strong>R1:</strong> Nagłówek musi istnieć i nie być pusty</li>
+            <li><strong>R2:</strong> Typ musi być jednym z: <code>feat</code>, <code>fix</code>, <code>docs</code>,
+                <code>style</code>, <code>refactor</code>, <code>perf</code>, <code>test</code>, <code>build</code>,
+                <code>ci</code>, <code>chore</code>, <code>revert</code></li>
+            <li><strong>R3:</strong> Zakres (opcjonalny) musi być w formacie kebab-case lub snake_case</li>
+            <li><strong>R4:</strong> Dwukropek <code>:</code> musi występować po typie/zakresie</li>
+            <li><strong>R5:</strong> Temat nie może być pusty</li>
+            <li><strong>R6:</strong> Temat nie powinien kończyć się kropką</li>
+            <li><strong>R7:</strong> Długość nagłówka: ostrzeżenie &gt;72, błąd &gt;100 znaków</li>
+            <li><strong>R8:</strong> Treść musi być oddzielona pustą linią od nagłówka</li>
+            <li><strong>R9:</strong> Linie dłuższe niż 100 znaków generują ostrzeżenie</li>
+        </ul>
+    </section>
+
+    <section class="input-section">
+        <label for="commit-input">Wiadomość commita</label>
+        <textarea
+                id="commit-input"
+                rows="8"
+                placeholder="feat(auth): dodaj logowanie przez Google&#10;&#10;Implementacja logowania OAuth2 z providerem Google. &#10;Obsługuje refresh tokenów i wylogowanie."
+                aria-describedby="input-hint"
+        ></textarea>
+        <small id="input-hint">Wpisz wiadomość commita w formacie Conventional Commits. Skrót: <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
+            aby sprawdzić.</small>
+    </section>
+
+    <section class="actions">
+        <button id="btn-lint" type="button">🔍 Sprawdź</button>
+        <button id="btn-fix" type="button">🔧 Napraw</button>
+        <button id="btn-copy" type="button" disabled>📋 Kopiuj</button>
+    </section>
+
+    <section id="user-choices-section" class="user-choices hidden" aria-live="polite">
+        <h2>⚠️ Wymagane wybory</h2>
+        <p class="choices-hint">Niektóre problemy wymagają Twojej decyzji, ponieważ nie można ich naprawić
+            automatycznie.</p>
+        <div id="user-choices"></div>
+        <button id="btn-apply-choices" type="button">✓ Zastosuj wybory</button>
+    </section>
+
+    <section id="issues-section" class="issues-section hidden" aria-live="polite">
+        <h2>🔎 Wyniki analizy</h2>
+        <ul id="issues-list" role="list"></ul>
+    </section>
+
+    <section id="output-section" class="output-section hidden">
+        <h2>✅ Naprawiona wiadomość</h2>
+        <pre id="fixed-output" tabindex="0" aria-label="Naprawiona wiadomość commita"></pre>
+        <small class="output-hint">Wiadomość została również wstawiona do pola tekstowego powyżej. </small>
+    </section>
+</main>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>
