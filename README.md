@@ -1,6 +1,6 @@
 # Git Linter
 
-Narzędzie front-endowe do walidacji konfiguracji repozytoriów Git w przeglądarce.
+Narzędzie front-endowe do walidacji komitów Git w przeglądarce.
 
 ---
 
