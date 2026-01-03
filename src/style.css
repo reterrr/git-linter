@@ -117,7 +117,7 @@ h2 {
     padding: 0;
 }
 
-.format-example code. muted {
+.format-example code.muted {
     color: var(--color-text-muted);
     font-size: 0.75rem;
 }

@@ -1,14 +1,15 @@
 {
   "compilerOptions":  {
-    "target": "ES2022",
+    "target": "ES2020",
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
+    "lib":  ["ES2020", "DOM", "DOM.Iterable"],
     "strict": true,
-    "noEmit": true,
-    "isolatedModules": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "skipLibCheck":  true,
-    "forceConsistentCasingInFileNames": true
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "include": ["src"]
 }
