@@ -1,5 +1,5 @@
 # Git linter
-Aplikacja webowa do dla tworzenia prawidłowych commitów
+Aplikacja webowa dla tworzenia prawidłowych commitów
 
 ## Szybki start
 
